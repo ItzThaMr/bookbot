@@ -37,6 +37,7 @@ def count_characters(text):
             char_dict[i] += 1
     return char_dict
 
+# sorts the dictionary by decending order
 def sort_by_value(char_dict):
     sorted_dict =dict(sorted(char_dict.items(), key=lambda item:item[1], reverse= True))       
     return sorted_dict
