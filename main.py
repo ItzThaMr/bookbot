@@ -3,9 +3,19 @@ def main():
     book_path = "books/frankenstein.txt"
     text = get_book_text(book_path)
     num_words = get_num_words(text)
-    print(f"{num_words} words found in the document")
+    
     total_characters = count_characters(text)
-    print(f"The dictionary is {total_characters}")
+    ordered_dict = sort_by_value(total_characters)
+    print(f"--- Begin report of {book_path}---")
+    print(f"There have been a total of {num_words} words found in the document")
+    for i in ordered_dict:
+        if ordered_dict[i] == 1:
+            print(f"The '{i}' character was found {ordered_dict[i]} time")
+        else:
+            print(f"The '{i}' character was found {ordered_dict[i]} times")
+    print("--- End report ---")
+
+
 # counting the amount of words in the book
 def get_num_words(text):
     words = text.split()
@@ -27,7 +37,9 @@ def count_characters(text):
             char_dict[i] += 1
     return char_dict
 
-
+def sort_by_value(char_dict):
+    sorted_dict =dict(sorted(char_dict.items(), key=lambda item:item[1], reverse= True))       
+    return sorted_dict
 
 main()
 
